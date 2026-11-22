@@ -1,0 +1,2877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn Headline Generator — Free Profile Headline Maker</title>
+  <meta name="description" content="Free LinkedIn headline generator for job seekers, founders, and pros. Build ATS-friendly headlines with a live 220-character counter and profile preview." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourdomain.com/" />
+
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:title" content="LinkedIn Headline Generator — Free Profile Headline Maker" />
+  <meta property="og:description" content="Free LinkedIn headline generator for job seekers, founders, and pros. Build ATS-friendly headlines with a live 220-character counter and profile preview." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:site_name" content="LinkedIn Headline Generator" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LinkedIn Headline Generator — Free Profile Headline Maker" />
+  <meta name="twitter:description" content="Free LinkedIn headline generator for job seekers, founders, and pros. Build ATS-friendly headlines with a live 220-character counter and profile preview." />
+
+  <!-- Embedded Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A66C2'/%3E%3Crect x='14' y='25' width='7.5' height='24' rx='2' fill='%23FFFFFF'/%3E%3Ccircle cx='17.75' cy='17.5' r='4.25' fill='%23FFFFFF'/%3E%3Cpath d='M27 25h7v3.6c1.5-2.4 4.2-4.1 7.8-4.1 6.1 0 9.7 3.9 9.7 10.6V49h-7.5V36.4c0-3.4-1.5-5.4-4.5-5.4-3.1 0-5 2.1-5 5.6V49H27V25z' fill='%23FFFFFF'/%3E%3Cpath d='M48 11.5l1.6 3.9 3.9 1.6-3.9 1.6-1.6 3.9-1.6-3.9-3.9-1.6 3.9-1.6 1.6-3.9z' fill='%23FFFFFF'/%3E%3C/svg%3E" />
+
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "LinkedIn Headline Generator",
+    "url": "https://yourdomain.com/",
+    "description": "Free LinkedIn headline generator for US job seekers, founders, executives, and career changers with a live 220-character counter and LinkedIn profile preview.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the LinkedIn headline character limit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LinkedIn allows up to 220 characters in your profile headline, including spaces and punctuation. However, only the first 60 to 80 characters appear next to your name in comments, connection requests, and mobile search results, so always put your core job title first."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I put \"Seeking new opportunities\" in my LinkedIn headline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually no. Recruiters rarely search for the phrase \"seeking new opportunities\" in LinkedIn Recruiter—they search for job titles and hard skills like \"Senior Financial Analyst\" or \"React Developer.\" Use your 220 characters for your target role and top skills, and turn on LinkedIn's built-in Open to Work setting instead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does LinkedIn's search algorithm read profile headlines?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your headline is one of the highest-weighted fields in LinkedIn search. When a hiring manager searches for a role plus two or three skills, profiles with exact matches in the headline tend to appear higher than profiles that only mention those terms deep in the Experience section."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this LinkedIn headline generator free and private?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This tool is 100% free with no account required and runs entirely in your browser. Your job title, skills, and saved headlines are never sent to a server—saved favorites stay in your own browser's local storage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which separator works best in a LinkedIn headline: pipe, bullet, or slash?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pipes (|) and bullets (•) are the easiest to scan quickly and keep separate phrases visually distinct for both human recruiters and search parsers. Leave a single space on both sides of each separator so LinkedIn indexes every keyword cleanly."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --brand: #0A66C2;
+      --brand-hover: #004182;
+      --brand-soft: #EBF3FB;
+      --bg: #F3F2EF;
+      --surface: #FFFFFF;
+      --surface-subtle: #F9FAFB;
+      --border: #E0DFDC;
+      --border-strong: #C9C7C1;
+      --text: #1D2226;
+      --text-secondary: #5E6B73;
+      --success: #057642;
+      --success-bg: #EBF7F1;
+      --warning: #915907;
+      --warning-bg: #FDF5E6;
+      --danger: #CC1016;
+      --danger-bg: #FDECEC;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 2px rgba(29, 34, 38, 0.05);
+      --focus-ring: 0 0 0 3px rgba(10, 102, 194, 0.25);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--text);
+      background-color: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    button, input, textarea, select {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Bar — Strict 3-zone contract */
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      height: 60px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand-link:hover {
+      text-decoration: none;
+      color: var(--brand);
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .site-nav {
+      display: none;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .site-nav a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 6px 0;
+      transition: color 0.15s ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      min-height: 40px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.875rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .header-cta:hover {
+      background: var(--brand-soft);
+      border-color: var(--brand);
+      color: var(--brand);
+    }
+
+    .tabular-num {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 24px 0 20px;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      text-wrap: balance;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      max-width: 68ch;
+    }
+
+    /* Main Workspace Layout */
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 48px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Form Panel */
+    .form-panel {
+      padding: 20px 22px 22px;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      min-height: 36px;
+      border: 1px solid var(--brand);
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--brand);
+      font-size: 0.84rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      background: var(--brand-soft);
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+
+    .field:last-of-type {
+      margin-bottom: 16px;
+    }
+
+    .field-label-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .field label,
+    .field-legend {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .field-hint {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .input-text {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .input-text::placeholder {
+      color: #7A868E;
+    }
+
+    .input-text:hover {
+      border-color: #8F99A0;
+    }
+
+    .input-text:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: var(--focus-ring);
+    }
+
+    .input-text.is-invalid {
+      border-color: var(--danger);
+      background: #FFFBFB;
+    }
+
+    .field-error {
+      margin: 6px 0 0;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--danger);
+      display: none;
+    }
+
+    .field-error.visible {
+      display: block;
+    }
+
+    .fieldset-clean {
+      border: 0;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+
+    .fieldset-clean legend {
+      padding: 0;
+      margin-bottom: 7px;
+    }
+
+    /* Segmented Goal Buttons */
+    .option-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .seg-btn {
+      min-height: 36px;
+      padding: 6px 11px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .seg-btn:hover {
+      border-color: var(--brand);
+      background: var(--brand-soft);
+    }
+
+    .seg-btn[aria-pressed="true"] {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    /* Separator Selector */
+    .separator-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .separator-group .seg-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+    }
+
+    .sep-glyph {
+      font-weight: 700;
+      opacity: 0.9;
+    }
+
+    /* Form Actions */
+    .form-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-top: 4px;
+    }
+
+    .btn-primary {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: var(--radius-sm);
+      background: var(--brand);
+      color: #FFFFFF;
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-hover);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 46px;
+      padding: 10px 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-subtle);
+      color: var(--text);
+      border-color: #8F99A0;
+    }
+
+    /* Right Column Stack */
+    .results-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 0;
+    }
+
+    /* Live LinkedIn Profile Preview */
+    .preview-card {
+      overflow: hidden;
+    }
+
+    .preview-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .preview-heading-group {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .preview-heading {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .preview-sub {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .viewport-switch {
+      display: inline-flex;
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      gap: 2px;
+    }
+
+    .viewport-btn {
+      min-height: 34px;
+      padding: 5px 12px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .viewport-btn[aria-pressed="true"] {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .preview-stage {
+      padding: 20px;
+      background: #F8F7F4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .li-mock {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: max-width 0.2s ease;
+    }
+
+    .li-mock.is-mobile {
+      max-width: 340px;
+    }
+
+    .li-banner {
+      height: 76px;
+      background: linear-gradient(125deg, #1E3A5F 0%, #0A66C2 58%, #3A82CC 100%);
+      position: relative;
+    }
+
+    .li-mock.is-mobile .li-banner {
+      height: 62px;
+    }
+
+    .li-body {
+      padding: 0 20px 18px;
+      position: relative;
+    }
+
+    .li-avatar-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: -38px;
+      margin-bottom: 14px;
+    }
+
+    .li-avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: #DCE6F1;
+      border: 3px solid var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #004182;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .li-avatar.open-to-work {
+      box-shadow: 0 0 0 3px var(--success);
+    }
+
+    .li-otw-tag {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: #FFFFFF;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 2px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+      border: 2px solid var(--surface);
+      display: none;
+    }
+
+    .li-avatar.open-to-work .li-otw-tag {
+      display: block;
+    }
+
+    .li-conn-meta {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      padding-bottom: 4px;
+    }
+
+    .li-name-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 3px;
+    }
+
+    .li-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .li-degree {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .li-headline {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      line-height: 1.42;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .li-mock.is-mobile .li-headline {
+      font-size: 0.9rem;
+    }
+
+    .li-location {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .li-location strong {
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    .li-snippet-box {
+      width: 100%;
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+      background: var(--surface-subtle);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .li-snippet-label {
+      display: block;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .li-snippet-text {
+      margin: 0;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .li-mock.is-mobile .li-snippet-text {
+      max-width: 280px;
+    }
+
+    /* Generated Results Panel */
+    .results-panel {
+      padding: 20px 24px 24px;
+    }
+
+    .results-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .results-title-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .results-count {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    /* Filter Tabs */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-tab {
+      min-height: 36px;
+      padding: 6px 12px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      color: var(--text-secondary);
+      font-size: 0.84rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .filter-tab:hover {
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+
+    .filter-tab[aria-selected="true"] {
+      background: var(--text);
+      color: #FFFFFF;
+    }
+
+    /* Headline List — Clean Hairline Dividers, Zero Nested Card Clutter */
+    .headline-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .headline-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.15s ease;
+    }
+
+    .headline-item:first-child {
+      padding-top: 4px;
+    }
+
+    .headline-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .headline-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .meta-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .meta-style {
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .meta-sep {
+      color: var(--border-strong);
+      user-select: none;
+    }
+
+    .char-status {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .char-status.is-optimal {
+      color: var(--success);
+    }
+
+    .char-status.is-tight {
+      color: var(--warning);
+    }
+
+    .char-status.is-over {
+      color: var(--danger);
+    }
+
+    .headline-editor {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface-subtle);
+      color: var(--text);
+      font-size: 0.96rem;
+      line-height: 1.45;
+      resize: vertical;
+      min-height: 62px;
+      transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .headline-editor:hover {
+      border-color: var(--border-strong);
+    }
+
+    .headline-editor:focus {
+      outline: none;
+      background: var(--surface);
+      border-color: var(--brand);
+      box-shadow: var(--focus-ring);
+    }
+
+    .headline-editor.is-over {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+    }
+
+    .headline-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 36px;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.84rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .action-btn:hover {
+      background: var(--surface-subtle);
+      border-color: #8F99A0;
+    }
+
+    .action-btn.btn-copy {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #FFFFFF;
+    }
+
+    .action-btn.btn-copy:hover {
+      background: var(--brand-hover);
+      border-color: var(--brand-hover);
+    }
+
+    .action-btn.btn-copy.copied {
+      background: var(--success);
+      border-color: var(--success);
+      color: #FFFFFF;
+    }
+
+    .action-btn.is-active-preview {
+      border-color: var(--brand);
+      background: var(--brand-soft);
+      color: var(--brand);
+    }
+
+    .action-btn.is-saved {
+      border-color: var(--success);
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .action-btn svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+
+    /* Empty Results State */
+    .empty-state {
+      text-align: center;
+      padding: 36px 20px;
+      color: var(--text-secondary);
+    }
+
+    .empty-state h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .empty-state p {
+      margin: 0 auto 18px;
+      max-width: 44ch;
+      font-size: 0.92rem;
+    }
+
+    /* Saved Favorites Section */
+    .saved-panel {
+      padding: 20px 24px;
+    }
+
+    .saved-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .btn-text-danger {
+      min-height: 36px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--danger);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-text-danger:hover {
+      background: var(--danger-bg);
+    }
+
+    .saved-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .saved-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .saved-text {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .saved-item-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .saved-empty {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Editorial SEO Content Sections */
+    .content-band {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .content-card {
+      padding: 32px;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-wrap: balance;
+    }
+
+    .section-lead {
+      margin: 0 0 28px;
+      color: var(--text-secondary);
+      max-width: 66ch;
+      font-size: 0.98rem;
+    }
+
+    /* Tips Grid */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .tip-item {
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .tip-num {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tip-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .tip-item p {
+      margin: 0;
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Formulas Table */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .formulas-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    .formulas-table th {
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--border);
+      background: var(--surface-subtle);
+      white-space: nowrap;
+    }
+
+    .formulas-table td {
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .formulas-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .formula-type {
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .formula-pattern {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.84rem;
+      color: var(--brand-hover);
+    }
+
+    .formula-example {
+      color: var(--text-secondary);
+    }
+
+    /* FAQ Accordion */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-chevron {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--text-secondary);
+      transition: transform 0.18s ease;
+    }
+
+    .faq-item[open] .faq-chevron {
+      transform: rotate(180deg);
+      color: var(--brand);
+    }
+
+    .faq-answer {
+      margin: 0 0 18px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 72ch;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      margin-top: 24px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-privacy {
+      margin: 0;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .back-to-top {
+      font-weight: 600;
+      color: var(--brand);
+      white-space: nowrap;
+    }
+
+    /* Live Status Region Toast */
+    .toast-region {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 60;
+      pointer-events: none;
+    }
+
+    .toast-msg {
+      background: var(--text);
+      color: #FFFFFF;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .toast-msg.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Breakpoints */
+    @media (min-width: 768px) {
+      .site-nav {
+        display: flex;
+      }
+
+      .tips-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 36px;
+      }
+
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .workspace {
+        grid-template-columns: 410px minmax(0, 1fr);
+        gap: 24px;
+      }
+
+      .form-panel {
+        position: sticky;
+        top: 80px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .container {
+        padding: 0 14px;
+      }
+
+      .form-panel,
+      .results-panel,
+      .saved-panel,
+      .content-card {
+        padding: 18px 16px;
+      }
+
+      .header-inner {
+        gap: 12px;
+      }
+
+      .brand-link {
+        font-size: 0.95rem;
+      }
+
+      .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-ghost {
+        min-height: 44px;
+      }
+
+      .seg-btn,
+      .action-btn {
+        min-height: 42px;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <!-- Semantic Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand-link">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#0A66C2" />
+          <rect x="14" y="25" width="7.5" height="24" rx="2" fill="#FFFFFF" />
+          <circle cx="17.75" cy="17.5" r="4.25" fill="#FFFFFF" />
+          <path d="M27 25h7v3.6c1.5-2.4 4.2-4.1 7.8-4.1 6.1 0 9.7 3.9 9.7 10.6V49h-7.5V36.4c0-3.4-1.5-5.4-4.5-5.4-3.1 0-5 2.1-5 5.6V49H27V25z" fill="#FFFFFF" />
+          <path d="M48 11.5l1.6 3.9 3.9 1.6-3.9 1.6-1.6 3.9-1.6-3.9-3.9-1.6 3.9-1.6 1.6-3.9z" fill="#FFFFFF" />
+        </svg>
+        <span>LinkedIn Headline Generator</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Page sections">
+        <a href="#generator">Generator</a>
+        <a href="#how-to-write">How to Write</a>
+        <a href="#formulas">Formulas</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <button type="button" id="jump-saved-btn" class="header-cta">
+        <span>Saved</span>
+        <span class="tabular-num" id="header-saved-count">(0)</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-inner">
+          <h1 id="hero-heading">Free LinkedIn Headline Generator</h1>
+          <p>Write a clear, ATS-friendly LinkedIn headline in seconds. Enter your role, core skills, and a measurable win to get recruiter-ready options with a live 220-character counter and profile preview.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2-Column Interactive Workspace -->
+    <section id="generator" class="container workspace" aria-label="LinkedIn Headline Generator Workspace">
+      <!-- Left Column: Input Form -->
+      <article class="card form-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Your Profile Details</h2>
+          <button type="button" id="quick-fill-btn" class="btn-ghost">Quick Fill Example</button>
+        </div>
+
+        <form id="headline-form" novalidate>
+          <div class="field">
+            <div class="field-label-row">
+              <label for="role-input">Current Role or Target Job Title</label>
+              <span class="field-hint">Required</span>
+            </div>
+            <input
+              type="text"
+              id="role-input"
+              name="role"
+              class="input-text"
+              placeholder="e.g., Senior Product Manager, Software Engineer, Registered Nurse"
+              autocomplete="organization-title"
+              required
+            />
+            <p id="role-error" class="field-error" role="alert">Please enter your current role or target job title.</p>
+          </div>
+
+          <div class="field">
+            <div class="field-label-row">
+              <label for="skills-input">Top Skills or Specialties</label>
+              <span class="field-hint">Comma-separated</span>
+            </div>
+            <input
+              type="text"
+              id="skills-input"
+              name="skills"
+              class="input-text"
+              placeholder="e.g., SaaS, Agile, B2B Growth"
+            />
+          </div>
+
+          <div class="field">
+            <div class="field-label-row">
+              <label for="achievement-input">Key Achievement or Value Prop</label>
+              <span class="field-hint">Optional</span>
+            </div>
+            <input
+              type="text"
+              id="achievement-input"
+              name="achievement"
+              class="input-text"
+              placeholder="e.g., Scaled ARR from $2M to $10M"
+            />
+          </div>
+
+          <fieldset class="fieldset-clean">
+            <legend class="field-legend">Goal / Profile Type</legend>
+            <div class="option-grid" id="goal-group" role="group" aria-label="Goal or profile type">
+              <button type="button" class="seg-btn" data-goal="Job Seeker" aria-pressed="true">Job Seeker</button>
+              <button type="button" class="seg-btn" data-goal="Founder / Freelancer" aria-pressed="false">Founder / Freelancer</button>
+              <button type="button" class="seg-btn" data-goal="Corporate / Executive" aria-pressed="false">Corporate / Executive</button>
+              <button type="button" class="seg-btn" data-goal="Career Changer" aria-pressed="false">Career Changer</button>
+              <button type="button" class="seg-btn" data-goal="Student / Entry-Level" aria-pressed="false">Student / Entry-Level</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="fieldset-clean">
+            <legend class="field-legend">Separator Style</legend>
+            <div class="separator-group" id="separator-group" role="group" aria-label="Separator style">
+              <button type="button" class="seg-btn" data-sep="|" aria-pressed="true"><span class="sep-glyph" aria-hidden="true">|</span> Pipe</button>
+              <button type="button" class="seg-btn" data-sep="•" aria-pressed="false"><span class="sep-glyph" aria-hidden="true">•</span> Bullet</button>
+              <button type="button" class="seg-btn" data-sep="/" aria-pressed="false"><span class="sep-glyph" aria-hidden="true">/</span> Slash</button>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" id="generate-btn" class="btn-primary">Generate Headlines</button>
+            <button type="button" id="reset-btn" class="btn-secondary">Clear</button>
+          </div>
+        </form>
+      </article>
+
+      <!-- Right Column: Live Profile Preview + Generated Headlines + Saved Favorites -->
+      <div class="results-column">
+        <!-- Live LinkedIn Profile Preview -->
+        <article class="card preview-card" aria-labelledby="preview-heading">
+          <div class="preview-toolbar">
+            <div class="preview-heading-group">
+              <h2 id="preview-heading" class="preview-heading">Live LinkedIn Profile Preview</h2>
+              <span class="preview-sub tabular-num" id="preview-char-summary">0 / 220 chars</span>
+            </div>
+            <div class="viewport-switch" role="group" aria-label="Preview viewport size">
+              <button type="button" class="viewport-btn" data-viewport="desktop" aria-pressed="true">Desktop</button>
+              <button type="button" class="viewport-btn" data-viewport="mobile" aria-pressed="false">Mobile</button>
+            </div>
+          </div>
+
+          <div class="preview-stage">
+            <div class="li-mock" id="li-mock-card">
+              <div class="li-banner" aria-hidden="true"></div>
+              <div class="li-body">
+                <div class="li-avatar-row">
+                  <div class="li-avatar open-to-work" id="preview-avatar" aria-hidden="true">
+                    <span>AT</span>
+                    <span class="li-otw-tag">#OPENTOWORK</span>
+                  </div>
+                  <span class="li-conn-meta" id="preview-connection-label">Open to Work · 500+ connections</span>
+                </div>
+                <div class="li-name-row">
+                  <p class="li-name" id="preview-name">Alex Taylor</p>
+                  <span class="li-degree">· 1st</span>
+                </div>
+                <p class="li-headline" id="preview-headline-text">Senior Product Manager | SaaS, Agile &amp; B2B Growth | Scaled ARR from $2M to $10M</p>
+                <p class="li-location">Austin, Texas, United States · <strong>Contact info</strong></p>
+              </div>
+              <div class="li-snippet-box">
+                <span class="li-snippet-label" id="preview-snippet-label">Comment &amp; search preview (first ~72 chars visible):</span>
+                <p class="li-snippet-text" id="preview-snippet-text">Senior Product Manager | SaaS, Agile &amp; B2B Growth | Scaled ARR from $2M to $10M</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Generated Headlines -->
+        <article class="card results-panel" aria-labelledby="results-heading">
+          <div class="results-top">
+            <div class="results-title-wrap">
+              <h2 id="results-heading" class="panel-title">Generated Headlines</h2>
+              <span class="results-count tabular-num" id="results-count-label">10 ready-to-edit options</span>
+            </div>
+            <button type="button" id="shuffle-btn" class="action-btn">Shuffle Wording</button>
+          </div>
+
+          <div class="filter-bar" id="style-filter-bar" role="tablist" aria-label="Filter headlines by style">
+            <button type="button" role="tab" class="filter-tab" data-style="All" aria-selected="true">All Styles</button>
+            <button type="button" role="tab" class="filter-tab" data-style="Recruiter-Friendly" aria-selected="false">Recruiter-Friendly</button>
+            <button type="button" role="tab" class="filter-tab" data-style="Value-Driven" aria-selected="false">Value-Driven</button>
+            <button type="button" role="tab" class="filter-tab" data-style="Authority" aria-selected="false">Authority</button>
+            <button type="button" role="tab" class="filter-tab" data-style="Short & Punchy" aria-selected="false">Short &amp; Punchy</button>
+          </div>
+
+          <ul id="headline-list" class="headline-list" aria-live="polite"></ul>
+
+          <div id="results-empty" class="empty-state" hidden>
+            <h3>Enter your job title to build headlines</h3>
+            <p>Fill out your role and top skills on the left, or load a sample US job profile with one click.</p>
+            <button type="button" id="empty-example-btn" class="btn-ghost">Load Sample Profile</button>
+          </div>
+        </article>
+
+        <!-- Saved Favorites -->
+        <article id="saved-section" class="card saved-panel" aria-labelledby="saved-heading">
+          <div class="saved-header">
+            <div class="results-title-wrap">
+              <h2 id="saved-heading" class="panel-title">Saved Headlines</h2>
+              <span class="results-count tabular-num" id="saved-count-label">0 saved</span>
+            </div>
+            <button type="button" id="clear-saved-btn" class="btn-text-danger" hidden>Clear All</button>
+          </div>
+          <p id="saved-empty" class="saved-empty">Click <strong>Save</strong> on any headline above to bookmark your favorites. Saved items stay in this browser even after you reload.</p>
+          <ul id="saved-list" class="saved-list" aria-live="polite"></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- On-Page SEO Section 1: How to Write a Great LinkedIn Headline -->
+    <section id="how-to-write" class="content-band" aria-labelledby="how-to-heading">
+      <div class="container">
+        <div class="card content-card">
+          <h2 id="how-to-heading" class="section-title">How to Write a Great LinkedIn Headline</h2>
+          <p class="section-lead">Recruiters spend only a few seconds scanning search results before deciding whose profile to click. A strong LinkedIn bio headline answers three fast questions: what job you do, what tools or domain you know, and what results you bring.</p>
+
+          <div class="tips-grid">
+            <article class="tip-item">
+              <span class="tip-num">01</span>
+              <h3>Put your exact target job title first</h3>
+              <p>LinkedIn truncates headlines around 60 to 80 characters in comments, mobile feeds, and Recruiter search previews. Lead with the exact title hiring managers type into the search bar—like "Senior Data Analyst" or "Account Executive"—instead of vague phrases like "Passionate Problem Solver."</p>
+            </article>
+
+            <article class="tip-item">
+              <span class="tip-num">02</span>
+              <h3>Add 2 to 4 searchable hard skills</h3>
+              <p>Think of your headline like an ATS-friendly resume header. Include the specific platforms, certifications, or specialties recruiters filter for (for example, "SQL, Tableau, Python" or "ICU, BSN, RN"). Skip generic soft skills that nobody searches for.</p>
+            </article>
+
+            <article class="tip-item">
+              <span class="tip-num">03</span>
+              <h3>Back it up with one concrete result</h3>
+              <p>If you have room left inside the 220-character limit, add a real number or clear outcome—like "Cut cloud spend by 32%" or "Helping Series A teams hire engineers." Plain proof beats hype every time.</p>
+            </article>
+
+            <article class="tip-item">
+              <span class="tip-num">04</span>
+              <h3>Keep formatting clean and scannable</h3>
+              <p>Break up your headline with spaces around pipes (|), bullets (•), or slashes (/). Avoid walls of emojis or ALL CAPS, which hurt readability on mobile screens and can break keyword matching in search.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- On-Page SEO Section 2: LinkedIn Headline Formulas Table -->
+    <section id="formulas" class="content-band" aria-labelledby="formulas-heading">
+      <div class="container">
+        <div class="card content-card">
+          <h2 id="formulas-heading" class="section-title">LinkedIn Headline Formulas That Work</h2>
+          <p class="section-lead">Use these proven LinkedIn headline examples as starting templates, then tailor the skills and proof point to match the jobs or clients you want next.</p>
+
+          <div class="table-wrap">
+            <table class="formulas-table">
+              <thead>
+                <tr>
+                  <th scope="col">Formula Type</th>
+                  <th scope="col">Structure</th>
+                  <th scope="col">Real Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="formula-type">Recruiter-Friendly (ATS)</td>
+                  <td class="formula-pattern">[Target Title] | [Skill 1], [Skill 2] &amp; [Skill 3] | [Domain]</td>
+                  <td class="formula-example">Senior Product Manager | SaaS, Agile &amp; B2B Growth | Enterprise Workflow Tools</td>
+                </tr>
+                <tr>
+                  <td class="formula-type">Value-Driven</td>
+                  <td class="formula-pattern">[Role] | Helping [Audience] achieve [Outcome] via [Skills]</td>
+                  <td class="formula-example">B2B Copywriter | Helping fintech teams convert more demos through email &amp; landing pages</td>
+                </tr>
+                <tr>
+                  <td class="formula-type">Metric &amp; Proof</td>
+                  <td class="formula-pattern">[Role] | [Quantified Achievement] | [Core Specialty]</td>
+                  <td class="formula-example">Account Executive | 138% Avg Quota Attainment | Mid-Market Cybersecurity Sales</td>
+                </tr>
+                <tr>
+                  <td class="formula-type">Career Changer</td>
+                  <td class="formula-pattern">[Target Role] | [Transferable Skills] | Former [Previous Role]</td>
+                  <td class="formula-example">UX Researcher | User Interviews, Usability Testing &amp; Figma | Former High School Educator</td>
+                </tr>
+                <tr>
+                  <td class="formula-type">Student / Entry-Level</td>
+                  <td class="formula-pattern">[Target Role] | [Degree / Focus] | [Tools &amp; Projects]</td>
+                  <td class="formula-example">Junior Software Engineer | CS Grad | TypeScript, React &amp; Node.js</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- On-Page SEO Section 3: FAQ Accordion -->
+    <section id="faq" class="content-band" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="card content-card">
+          <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
+          <p class="section-lead">Quick answers to the most common questions about writing and updating your LinkedIn profile headline.</p>
+
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>
+                <span>What is the LinkedIn headline character limit?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <p class="faq-answer">LinkedIn allows up to 220 characters in your profile headline, including spaces and punctuation. However, only the first 60 to 80 characters appear next to your name in comments, connection requests, and mobile search results, so always put your core job title first.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Should I put "Seeking new opportunities" in my LinkedIn headline?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <p class="faq-answer">Usually no. Recruiters rarely search for the phrase "seeking new opportunities" in LinkedIn Recruiter—they search for job titles and hard skills like "Senior Financial Analyst" or "React Developer." Use your 220 characters for your target role and top skills, and turn on LinkedIn's built-in Open to Work setting instead.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>How does LinkedIn's search algorithm read profile headlines?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <p class="faq-answer">Your headline is one of the highest-weighted fields in LinkedIn search. When a hiring manager searches for a role plus two or three skills, profiles with exact matches in the headline tend to appear higher than profiles that only mention those terms deep in the Experience section.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Is this LinkedIn headline generator free and private?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <p class="faq-answer">Yes. This tool is 100% free with no account required and runs entirely in your browser. Your job title, skills, and saved headlines are never sent to a server—saved favorites stay in your own browser's local storage.</p>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Which separator works best in a LinkedIn headline: pipe, bullet, or slash?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <p class="faq-answer">Pipes (|) and bullets (•) are the easiest to scan quickly and keep separate phrases visually distinct for both human recruiters and search parsers. Leave a single space on both sides of each separator so LinkedIn indexes every keyword cleanly.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Simple Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-privacy">100% browser-based — your profile details are never stored on a server.</p>
+      <div class="footer-bottom">
+        <span>&copy; <span id="footer-year">2026</span> LinkedIn Headline Generator. Not affiliated with LinkedIn Corporation.</span>
+        <a href="#top" class="back-to-top">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Accessible Live Toast Feedback -->
+  <div class="toast-region" aria-live="polite" aria-atomic="true">
+    <div id="toast-msg" class="toast-msg"></div>
+  </div>
+
+  <!-- Pure Headline Generation Engine (Isolated for clean testability) -->
+  <script id="headline-engine">
+    (function (root) {
+      'use strict';
+
+      var MAX_HEADLINE_CHARS = 220;
+
+      var SAMPLE_PROFILES = [
+        {
+          role: 'Senior Product Manager',
+          skills: 'SaaS, Agile, B2B Growth',
+          achievement: 'Scaled ARR from $2M to $10M',
+          goal: 'Job Seeker',
+          separator: '|'
+        },
+        {
+          role: 'Full-Stack Software Engineer',
+          skills: 'TypeScript, React, Node.js, AWS',
+          achievement: 'Cut checkout API latency by 45%',
+          goal: 'Job Seeker',
+          separator: '|'
+        },
+        {
+          role: 'B2B Content Strategist',
+          skills: 'SEO, SaaS Messaging, Conversion Copy',
+          achievement: 'Helping Series A startups turn blog traffic into pipeline',
+          goal: 'Founder / Freelancer',
+          separator: '•'
+        },
+        {
+          role: 'Registered Nurse (RN, BSN)',
+          skills: 'ICU Care, Telemetry, Patient Advocacy',
+          achievement: '6+ years in Level I trauma centers',
+          goal: 'Corporate / Executive',
+          separator: '|'
+        }
+      ];
+
+      function cleanText(str) {
+        return String(str || '').replace(/\s+/g, ' ').trim();
+      }
+
+      function parseSkills(skillsRaw) {
+        if (!skillsRaw) return [];
+        var seen = Object.create(null);
+        var parts = String(skillsRaw).split(/[,;\n]+/);
+        var result = [];
+        for (var i = 0; i < parts.length; i++) {
+          var item = cleanText(parts[i]);
+          if (!item) continue;
+          var key = item.toLowerCase();
+          if (!seen[key]) {
+            seen[key] = true;
+            result.push(item);
+          }
+        }
+        return result;
+      }
+
+      function joinNatural(list) {
+        if (list.length === 0) return '';
+        if (list.length === 1) return list[0];
+        if (list.length === 2) return list[0] + ' & ' + list[1];
+        return list.slice(0, -1).join(', ') + ' & ' + list[list.length - 1];
+      }
+
+      function joinParts(parts, sep) {
+        var glue = ' ' + (sep || '|') + ' ';
+        var filtered = [];
+        for (var i = 0; i < parts.length; i++) {
+          var p = cleanText(parts[i]);
+          if (p) filtered.push(p);
+        }
+        return filtered.join(glue);
+      }
+
+      function getCharStatus(text) {
+        var len = String(text || '').length;
+        if (len > MAX_HEADLINE_CHARS) {
+          return {
+            length: len,
+            max: MAX_HEADLINE_CHARS,
+            state: 'over',
+            label: len + ' / ' + MAX_HEADLINE_CHARS + ' chars · Over limit by ' + (len - MAX_HEADLINE_CHARS)
+          };
+        }
+        if (len >= 195) {
+          return {
+            length: len,
+            max: MAX_HEADLINE_CHARS,
+            state: 'tight',
+            label: len + ' / ' + MAX_HEADLINE_CHARS + ' chars · Near limit'
+          };
+        }
+        return {
+          length: len,
+          max: MAX_HEADLINE_CHARS,
+          state: 'optimal',
+          label: len + ' / ' + MAX_HEADLINE_CHARS + ' chars · Optimal'
+        };
+      }
+
+      function lowerFirstIfNeeded(phrase) {
+        var t = cleanText(phrase);
+        if (!t) return '';
+        // Preserve acronyms like AWS, SaaS, B2B, ICU, US, ARR
+        if (/^[A-Z]{2,}/.test(t) || /^[A-Z][a-z]*[A-Z]/.test(t) || /^\$/.test(t)) {
+          return t;
+        }
+        return t.charAt(0).toLowerCase() + t.slice(1);
+      }
+
+      function generateHeadlines(input, variantSeed) {
+        var role = cleanText(input && input.role);
+        if (!role) return [];
+
+        var skills = parseSkills(input && input.skills);
+        var achievement = cleanText(input && input.achievement);
+        var goal = cleanText(input && input.goal) || 'Job Seeker';
+        var sep = cleanText(input && input.separator) || '|';
+        var seed = typeof variantSeed === 'number' ? Math.abs(Math.floor(variantSeed)) : 0;
+
+        var topTwo = skills.slice(0, 2);
+        var topThree = skills.slice(0, 3);
+        var topFour = skills.slice(0, 4);
+        var skillsComma = topThree.join(', ');
+        var skillsAmp = joinNatural(topThree);
+        var skillsPair = joinNatural(topTwo);
+        var skillsSep = topThree.join(' ' + sep + ' ');
+        var firstSkill = skills[0] || '';
+        var secondSkill = skills[1] || '';
+
+        var pick = function (arr) {
+          return arr[seed % arr.length];
+        };
+
+        var candidates = [];
+        var add = function (style, angle, text) {
+          var normalized = cleanText(text);
+          if (!normalized) return;
+          candidates.push({
+            id: 'hl-' + candidates.length,
+            style: style,
+            angle: angle,
+            text: normalized
+          });
+        };
+
+        // 1. Recruiter-Friendly (3 variations tailored to Goal)
+        if (goal === 'Job Seeker') {
+          add(
+            'Recruiter-Friendly',
+            'Exact Title + Skills',
+            skills.length
+              ? joinParts([role, skillsAmp, achievement || pick(['Open to US & Remote Roles', 'Focused on Measurable Business Impact'])], sep)
+              : joinParts([role, achievement || 'Hands-On Execution & Cross-Functional Delivery', 'Open to New Roles'], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'ATS Keyword Stack',
+            skills.length >= 2
+              ? joinParts([role, topFour.join(' ' + sep + ' ')], sep)
+              : joinParts([role, firstSkill || 'Strategy & Operations', achievement || 'Delivering Reliable Results'], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'Search-First Summary',
+            achievement
+              ? joinParts([role + (firstSkill ? ' (' + firstSkill + ')' : ''), skills.slice(1, 3).join(', ') || skillsComma, achievement], sep)
+              : joinParts([role, skillsComma ? 'Specializing in ' + skillsComma : 'Practical Problem Solving & Execution', pick(['Ready for High-Impact Teams', 'US-Based Professional'])], sep)
+          );
+        } else if (goal === 'Founder / Freelancer') {
+          add(
+            'Recruiter-Friendly',
+            'Client Search Match',
+            joinParts([role, skillsAmp || 'Advisory & Consulting', achievement || pick(['Available for Q2/Q3 Engagements', 'Fractional & Project-Based'])], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'Service & Specialty Stack',
+            skills.length >= 2
+              ? joinParts([role + ' & Consultant', skillsSep], sep)
+              : joinParts(['Independent ' + role, firstSkill || 'Client Delivery', achievement || 'Working with US Growth Teams'], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'Clear Positioning',
+            joinParts(['Founder & ' + role, skillsComma || 'Strategy & Execution', achievement || pick(['Helping Teams Ship Faster', 'Hands-On Partner for Growing Companies'])], sep)
+          );
+        } else if (goal === 'Corporate / Executive') {
+          add(
+            'Recruiter-Friendly',
+            'Executive Keyword Profile',
+            joinParts([role, skillsAmp || 'Strategy, P&L & Team Leadership', achievement || pick(['Scaling High-Performing Teams', 'Driving Revenue & Operational Rigor'])], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'Domain & Leadership Stack',
+            skills.length >= 2
+              ? joinParts([role, topThree.join(', '), pick(['Cross-Functional Leadership', 'Enterprise Execution'])], sep)
+              : joinParts([role, firstSkill || 'Organizational Growth', achievement || 'Building Accountable Teams'], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'Board & Recruiter Ready',
+            joinParts([role + (firstSkill ? ' — ' + firstSkill : ''), secondSkill ? skills.slice(1, 3).join(' & ') : 'Operations & Strategy', achievement || 'Focused on Long-Term Growth'], sep)
+          );
+        } else if (goal === 'Career Changer') {
+          add(
+            'Recruiter-Friendly',
+            'Target Role + Transferable Skills',
+            joinParts([role, skillsAmp || 'Research, Analysis & Project Delivery', achievement || pick(['Bringing Real-World Industry Experience', 'Hands-On Portfolio & Certifications'])], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'Skills-Forward Transition',
+            skills.length >= 2
+              ? joinParts([role, skillsSep, pick(['Career Transition', 'Cross-Industry Perspective'])], sep)
+              : joinParts([role, firstSkill || 'Applied Problem Solving', achievement || 'Trained & Ready to Contribute'], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'Bridge Formula',
+            joinParts([role + (firstSkill ? ' (' + firstSkill + ')' : ''), achievement || (skillsPair ? 'Combining ' + skillsPair + ' with Strong Communication' : 'Combining Domain Knowledge with Fresh Technical Skills')], sep)
+          );
+        } else {
+          // Student / Entry-Level
+          add(
+            'Recruiter-Friendly',
+            'Entry-Level Search Match',
+            joinParts([role, skillsAmp || 'Project Execution & Research', achievement || pick(['Recent Graduate & Ready to Contribute', 'Seeking Full-Time or Internship Roles'])], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'Core Skills & Projects',
+            skills.length >= 2
+              ? joinParts([role, topFour.join(', '), pick(['Portfolio & Hands-On Projects', 'Fast Learner'])], sep)
+              : joinParts(['Entry-Level ' + role, firstSkill || 'Analytical Thinking', achievement || 'Building Real-World Projects'], sep)
+          );
+          add(
+            'Recruiter-Friendly',
+            'Campus-to-Career Format',
+            joinParts([role, skillsPair ? 'Trained in ' + skillsPair : 'Strong Technical & Communication Foundation', achievement || 'Open to Entry-Level US Roles'], sep)
+          );
+        }
+
+        // 2. Value-Driven (3 variations)
+        if (achievement) {
+          var startsWithVerb = /^(helping|building|scaling|leading|driving|growing|turning|designing|shipping|saving|cutting|reducing|managing|coaching|supporting)/i.test(achievement);
+          add(
+            'Value-Driven',
+            'Outcome-Led',
+            joinParts([role, achievement, skillsPair || firstSkill], sep)
+          );
+          add(
+            'Value-Driven',
+            'Who You Help + Proof',
+            startsWithVerb
+              ? role + ' ' + sep + ' ' + achievement + (skillsPair ? ' using ' + skillsPair : '')
+              : joinParts([role, pick(['Track Record: ', 'Recent Impact: ']) + achievement, skillsComma], sep)
+          );
+          add(
+            'Value-Driven',
+            'Benefit-First Hybrid',
+            skillsPair
+              ? role + ' specializing in ' + skillsPair + ' ' + sep + ' ' + achievement
+              : role + ' focused on results ' + sep + ' ' + achievement
+          );
+        } else {
+          if (goal === 'Founder / Freelancer') {
+            add(
+              'Value-Driven',
+              'Client Outcome Formula',
+              skillsPair
+                ? role + ' ' + sep + ' Helping growing companies win with ' + skillsPair
+                : role + ' ' + sep + ' Helping US businesses turn clear strategy into measurable revenue'
+            );
+            add(
+              'Value-Driven',
+              'Problem-Solver Angle',
+              joinParts([role, pick(['Practical ', 'No-Fluff ']) + (firstSkill ? firstSkill + ' Solutions' : 'Consulting') + ' for Busy Teams', secondSkill], sep)
+            );
+            add(
+              'Value-Driven',
+              'Partner Positioning',
+              skillsAmp
+                ? 'Partnering with founders and operators on ' + skillsAmp + ' ' + sep + ' ' + role
+                : role + ' ' + sep + ' Hands-on execution from kickoff to launch'
+            );
+          } else if (goal === 'Student / Entry-Level') {
+            add(
+              'Value-Driven',
+              'Builder Mindset',
+              skillsPair
+                ? role + ' building practical work with ' + skillsPair
+                : role + ' turning classroom fundamentals into shipped projects'
+            );
+            add(
+              'Value-Driven',
+              'Contribution Focus',
+              joinParts([role, pick(['Focused on ', 'Hands-On in ']) + (skillsAmp || 'Research, Analysis & Execution'), 'Ready for Day-One Impact'], sep)
+            );
+            add(
+              'Value-Driven',
+              'Growth & Reliability',
+              joinParts([role, firstSkill ? 'Applying ' + firstSkill + ' to Real Problems' : 'Detail-Oriented & Collaborative', secondSkill || 'US-Based'], sep)
+            );
+          } else {
+            add(
+              'Value-Driven',
+              'Impact Statement',
+              skillsPair
+                ? role + ' ' + sep + ' Turning ' + skillsPair + ' into measurable business results'
+                : role + ' ' + sep + ' Turning complex goals into clear, repeatable results'
+            );
+            add(
+              'Value-Driven',
+              'Team Value Prop',
+              joinParts([role, pick(['Helping teams deliver on ', 'Driving better outcomes in ']) + (skillsAmp || 'core operations and customer growth')], sep)
+            );
+            add(
+              'Value-Driven',
+              'Execution Focus',
+              skills.length >= 2
+                ? role + ' focused on ' + firstSkill + ' & ' + secondSkill + ' ' + sep + ' Built for fast-moving teams'
+                : role + ' ' + sep + ' Known for clear communication and reliable follow-through'
+            );
+          }
+        }
+
+        // 3. Authority (2 variations)
+        if (goal === 'Corporate / Executive') {
+          add(
+            'Authority',
+            'Leadership & Track Record',
+            joinParts([role, achievement || pick(['Leading Teams Through Scale & Change', 'Aligning Strategy With Execution']), skillsPair || 'Executive Leadership'], sep)
+          );
+          add(
+            'Authority',
+            'Domain Expert',
+            skillsAmp
+              ? role + ' ' + sep + ' Deep expertise across ' + skillsAmp
+              : role + ' ' + sep + ' Building durable teams, systems, and revenue'
+          );
+        } else if (goal === 'Founder / Freelancer') {
+          add(
+            'Authority',
+            'Advisor Credibility',
+            joinParts([role, pick(['Trusted Advisor in ', 'Specialist in ']) + (skillsPair || 'Growth & Operations'), achievement || 'Direct, Hands-On Delivery'], sep)
+          );
+          add(
+            'Authority',
+            'Founder Track Record',
+            achievement
+              ? joinParts([role, achievement, pick(['Independent Consultant', 'Founder & Strategist'])], sep)
+              : joinParts([role, skillsAmp || 'Strategy & Implementation', 'Working Directly With Leadership Teams'], sep)
+          );
+        } else if (goal === 'Career Changer') {
+          add(
+            'Authority',
+            'Seasoned Professional Transition',
+            joinParts([role, skillsPair ? 'Skilled in ' + skillsPair : 'Proven Analytical & Leadership Skills', achievement || 'Bringing Years of Real-World Ownership'], sep)
+          );
+          add(
+            'Authority',
+            'Cross-Disciplinary Edge',
+            joinParts([role, achievement ? achievement : 'Translating Prior Industry Experience into ' + (firstSkill || 'Stronger Outcomes'), secondSkill], sep)
+          );
+        } else if (goal === 'Student / Entry-Level') {
+          add(
+            'Authority',
+            'Project-Backed Credibility',
+            joinParts([role, skillsAmp ? 'Projects in ' + skillsAmp : 'Applied Projects & Technical Research', achievement || 'Backed by Real Portfolio Work'], sep)
+          );
+          add(
+            'Authority',
+            'Focused Specialist',
+            skills.length >= 2
+              ? role + ' ' + sep + ' Focused on ' + skills[0] + ', ' + skills[1] + ' & clean execution'
+              : role + ' ' + sep + ' Committed to craft, speed, and continuous learning'
+          );
+        } else {
+          add(
+            'Authority',
+            'Proven Specialist',
+            joinParts([role, achievement || (skillsPair ? 'Proven track record in ' + skillsPair : 'Trusted to own high-stakes projects'), skills.length >= 3 ? skills[2] : (firstSkill && achievement ? firstSkill : '')], sep)
+          );
+          add(
+            'Authority',
+            'Craft & Depth',
+            skillsAmp
+              ? role + ' ' + sep + ' Deep focus on ' + skillsAmp + (achievement ? ' ' + sep + ' ' + achievement : '')
+              : role + ' ' + sep + (achievement ? achievement : 'Solving tough problems with clear, practical execution')
+          );
+        }
+
+        // 4. Short & Punchy (2 variations — built to stay clean & avoid mobile truncation)
+        add(
+          'Short & Punchy',
+          'Under-80-Char Clean',
+          skills.length >= 2
+            ? joinParts([role, skills[0] + ' & ' + skills[1]], sep)
+            : joinParts([role, firstSkill || (achievement && achievement.length <= 45 ? achievement : 'Impact & Execution')], sep)
+        );
+        add(
+          'Short & Punchy',
+          'Minimalist Proof',
+          achievement && achievement.length <= 65
+            ? joinParts([role, achievement], sep)
+            : joinParts([role, skills.slice(0, 3).join(', ') || pick(['Strategy & Execution', 'Hands-On Builder'])], sep)
+        );
+
+        // Deduplicate any identical text strings
+        var unique = [];
+        var seenText = Object.create(null);
+        for (var j = 0; j < candidates.length; j++) {
+          var keyText = candidates[j].text.toLowerCase();
+          if (!seenText[keyText]) {
+            seenText[keyText] = true;
+            candidates[j].id = 'hl-' + unique.length;
+            unique.push(candidates[j]);
+          }
+        }
+        return unique;
+      }
+
+      root.HeadlineEngine = {
+        MAX_HEADLINE_CHARS: MAX_HEADLINE_CHARS,
+        SAMPLE_PROFILES: SAMPLE_PROFILES,
+        cleanText: cleanText,
+        parseSkills: parseSkills,
+        getCharStatus: getCharStatus,
+        generateHeadlines: generateHeadlines
+      };
+    })(typeof globalThis !== 'undefined' ? globalThis : window);
+  </script>
+
+  <!-- UI Controller (100% Vanilla JS) -->
+  <script>
+    (function () {
+      'use strict';
+
+      var engine = window.HeadlineEngine;
+      var STORAGE_KEY = 'li_headline_gen_saved_v1';
+
+      var state = {
+        goal: 'Job Seeker',
+        separator: '|',
+        activeFilter: 'All',
+        previewViewport: 'desktop',
+        sampleIndex: 0,
+        variantSeed: 0,
+        headlines: [],
+        activePreviewId: null,
+        previewText: '',
+        saved: []
+      };
+
+      // DOM References
+      var form = document.getElementById('headline-form');
+      var roleInput = document.getElementById('role-input');
+      var roleError = document.getElementById('role-error');
+      var skillsInput = document.getElementById('skills-input');
+      var achievementInput = document.getElementById('achievement-input');
+      var goalGroup = document.getElementById('goal-group');
+      var separatorGroup = document.getElementById('separator-group');
+      var quickFillBtn = document.getElementById('quick-fill-btn');
+      var emptyExampleBtn = document.getElementById('empty-example-btn');
+      var resetBtn = document.getElementById('reset-btn');
+      var shuffleBtn = document.getElementById('shuffle-btn');
+      var styleFilterBar = document.getElementById('style-filter-bar');
+
+      var headlineList = document.getElementById('headline-list');
+      var resultsEmpty = document.getElementById('results-empty');
+      var resultsCountLabel = document.getElementById('results-count-label');
+
+      var liMockCard = document.getElementById('li-mock-card');
+      var previewAvatar = document.getElementById('preview-avatar');
+      var previewConnLabel = document.getElementById('preview-connection-label');
+      var previewHeadlineText = document.getElementById('preview-headline-text');
+      var previewSnippetLabel = document.getElementById('preview-snippet-label');
+      var previewSnippetText = document.getElementById('preview-snippet-text');
+      var previewCharSummary = document.getElementById('preview-char-summary');
+      var viewportButtons = document.querySelectorAll('.viewport-btn');
+
+      var savedSection = document.getElementById('saved-section');
+      var savedList = document.getElementById('saved-list');
+      var savedEmpty = document.getElementById('saved-empty');
+      var savedCountLabel = document.getElementById('saved-count-label');
+      var headerSavedCount = document.getElementById('header-saved-count');
+      var clearSavedBtn = document.getElementById('clear-saved-btn');
+      var jumpSavedBtn = document.getElementById('jump-saved-btn');
+
+      var toastEl = document.getElementById('toast-msg');
+      var toastTimer = null;
+
+      function showToast(message) {
+        toastEl.textContent = message;
+        toastEl.classList.add('visible');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toastEl.classList.remove('visible');
+        }, 2200);
+      }
+
+      function loadSavedFromStorage() {
+        try {
+          var raw = window.localStorage.getItem(STORAGE_KEY);
+          if (!raw) return [];
+          var parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed)) return [];
+          return parsed.filter(function (item) {
+            return item && typeof item.text === 'string' && item.text.trim().length > 0;
+          });
+        } catch (err) {
+          return [];
+        }
+      }
+
+      function persistSavedToStorage() {
+        try {
+          window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state.saved));
+        } catch (err) {
+          // Ignore storage quota or private browsing errors gracefully
+        }
+      }
+
+      function isTextSaved(text) {
+        var target = engine.cleanText(text).toLowerCase();
+        for (var i = 0; i < state.saved.length; i++) {
+          if (engine.cleanText(state.saved[i].text).toLowerCase() === target) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      function copyToClipboard(text, triggerButton) {
+        var onSuccess = function () {
+          if (triggerButton) {
+            var origText = triggerButton.getAttribute('data-orig-label') || 'Copy';
+            triggerButton.classList.add('copied');
+            triggerButton.textContent = 'Copied!';
+            setTimeout(function () {
+              triggerButton.classList.remove('copied');
+              triggerButton.textContent = origText;
+            }, 1800);
+          }
+          showToast('Headline copied to clipboard');
+        };
+
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          navigator.clipboard.writeText(text).then(onSuccess).catch(function () {
+            fallbackCopy(text, onSuccess);
+          });
+        } else {
+          fallbackCopy(text, onSuccess);
+        }
+      }
+
+      function fallbackCopy(text, onSuccess) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+        } catch (err) {
+          // Clipboard fallback unavailable
+        }
+        document.body.removeChild(ta);
+        onSuccess();
+      }
+
+      function updateGoalButtons(goalValue) {
+        state.goal = goalValue;
+        var buttons = goalGroup.querySelectorAll('.seg-btn');
+        for (var i = 0; i < buttons.length; i++) {
+          var isSelected = buttons[i].getAttribute('data-goal') === goalValue;
+          buttons[i].setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+        }
+        updatePreviewChrome();
+      }
+
+      function updateSeparatorButtons(sepValue) {
+        state.separator = sepValue;
+        var buttons = separatorGroup.querySelectorAll('.seg-btn');
+        for (var i = 0; i < buttons.length; i++) {
+          var isSelected = buttons[i].getAttribute('data-sep') === sepValue;
+          buttons[i].setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+        }
+      }
+
+      function updatePreviewChrome() {
+        var isJobSeeker = state.goal === 'Job Seeker' || state.goal === 'Student / Entry-Level' || state.goal === 'Career Changer';
+        if (isJobSeeker) {
+          previewAvatar.classList.add('open-to-work');
+          previewConnLabel.textContent = 'Open to Work · 500+ connections';
+        } else {
+          previewAvatar.classList.remove('open-to-work');
+          previewConnLabel.textContent = state.goal === 'Founder / Freelancer' ? 'Providing services · 500+ connections' : '500+ connections';
+        }
+      }
+
+      function updatePreview(text, id) {
+        state.previewText = text || '';
+        state.activePreviewId = id || null;
+
+        var display = state.previewText || 'Your LinkedIn headline will appear here as you generate or edit options.';
+        previewHeadlineText.textContent = display;
+
+        var limit = state.previewViewport === 'mobile' ? 58 : 74;
+        var truncated = display.length > limit ? display.slice(0, limit).trimEnd() + '…' : display;
+        previewSnippetText.textContent = truncated;
+        previewSnippetLabel.textContent =
+          state.previewViewport === 'mobile'
+            ? 'Mobile comment & search preview (first ~58 chars visible):'
+            : 'Desktop comment & search preview (first ~74 chars visible):';
+
+        var status = engine.getCharStatus(state.previewText);
+        previewCharSummary.textContent = status.label;
+        previewCharSummary.className = 'preview-sub tabular-num char-status is-' + status.state;
+
+        // Sync active Preview button highlight
+        var previewBtns = headlineList.querySelectorAll('[data-action="preview"]');
+        for (var i = 0; i < previewBtns.length; i++) {
+          var btnId = previewBtns[i].getAttribute('data-id');
+          previewBtns[i].classList.toggle('is-active-preview', btnId === state.activePreviewId);
+          previewBtns[i].textContent = btnId === state.activePreviewId ? 'Previewing' : 'Preview';
+        }
+      }
+
+      function setRoleError(visible) {
+        roleError.classList.toggle('visible', visible);
+        roleInput.classList.toggle('is-invalid', visible);
+        roleInput.setAttribute('aria-invalid', visible ? 'true' : 'false');
+      }
+
+      function renderHeadlines() {
+        headlineList.innerHTML = '';
+
+        var filtered = state.headlines.filter(function (item) {
+          return state.activeFilter === 'All' || item.style === state.activeFilter;
+        });
+
+        if (state.headlines.length === 0) {
+          resultsEmpty.hidden = false;
+          shuffleBtn.disabled = true;
+          resultsCountLabel.textContent = '0 options';
+          return;
+        }
+
+        resultsEmpty.hidden = true;
+        shuffleBtn.disabled = false;
+        resultsCountLabel.textContent =
+          filtered.length === state.headlines.length
+            ? state.headlines.length + ' ready-to-edit options'
+            : filtered.length + ' of ' + state.headlines.length + ' options';
+
+        var frag = document.createDocumentFragment();
+
+        for (var i = 0; i < filtered.length; i++) {
+          var item = filtered[i];
+          var status = engine.getCharStatus(item.text);
+          var savedNow = isTextSaved(item.text);
+          var isPreviewing = item.id === state.activePreviewId;
+
+          var li = document.createElement('li');
+          li.className = 'headline-item';
+          li.setAttribute('data-id', item.id);
+
+          // Top unboxed metadata row
+          var meta = document.createElement('div');
+          meta.className = 'headline-meta';
+
+          var metaLeft = document.createElement('div');
+          metaLeft.className = 'meta-left';
+
+          var styleSpan = document.createElement('span');
+          styleSpan.className = 'meta-style';
+          styleSpan.textContent = item.style;
+
+          var sepSpan = document.createElement('span');
+          sepSpan.className = 'meta-sep';
+          sepSpan.setAttribute('aria-hidden', 'true');
+          sepSpan.textContent = '·';
+
+          var angleSpan = document.createElement('span');
+          angleSpan.textContent = item.angle;
+
+          metaLeft.appendChild(styleSpan);
+          metaLeft.appendChild(sepSpan);
+          metaLeft.appendChild(angleSpan);
+
+          var charSpan = document.createElement('span');
+          charSpan.className = 'char-status is-' + status.state;
+          charSpan.setAttribute('data-role', 'char-counter');
+          charSpan.textContent = status.label;
+
+          meta.appendChild(metaLeft);
+          meta.appendChild(charSpan);
+
+          // Inline editable textarea
+          var editorLabel = document.createElement('label');
+          editorLabel.className = 'sr-only';
+          editorLabel.setAttribute('for', 'editor-' + item.id);
+          editorLabel.textContent = 'Edit ' + item.style + ' headline ' + (i + 1);
+
+          var textarea = document.createElement('textarea');
+          textarea.id = 'editor-' + item.id;
+          textarea.className = 'headline-editor' + (status.state === 'over' ? ' is-over' : '');
+          textarea.rows = 2;
+          textarea.value = item.text;
+          textarea.setAttribute('data-id', item.id);
+
+          // Action buttons row
+          var actions = document.createElement('div');
+          actions.className = 'headline-actions';
+
+          var copyBtn = document.createElement('button');
+          copyBtn.type = 'button';
+          copyBtn.className = 'action-btn btn-copy';
+          copyBtn.setAttribute('data-action', 'copy');
+          copyBtn.setAttribute('data-id', item.id);
+          copyBtn.setAttribute('data-orig-label', 'Copy');
+          copyBtn.setAttribute('aria-label', 'Copy ' + item.style + ' headline ' + (i + 1));
+          copyBtn.textContent = 'Copy';
+
+          var previewBtn = document.createElement('button');
+          previewBtn.type = 'button';
+          previewBtn.className = 'action-btn' + (isPreviewing ? ' is-active-preview' : '');
+          previewBtn.setAttribute('data-action', 'preview');
+          previewBtn.setAttribute('data-id', item.id);
+          previewBtn.setAttribute('aria-label', 'Preview ' + item.style + ' headline ' + (i + 1) + ' on profile card');
+          previewBtn.textContent = isPreviewing ? 'Previewing' : 'Preview';
+
+          var saveBtn = document.createElement('button');
+          saveBtn.type = 'button';
+          saveBtn.className = 'action-btn' + (savedNow ? ' is-saved' : '');
+          saveBtn.setAttribute('data-action', 'save');
+          saveBtn.setAttribute('data-id', item.id);
+          saveBtn.setAttribute('aria-pressed', savedNow ? 'true' : 'false');
+          saveBtn.setAttribute('aria-label', (savedNow ? 'Remove from saved: ' : 'Save ') + item.style + ' headline ' + (i + 1));
+          saveBtn.textContent = savedNow ? 'Saved' : 'Save';
+
+          actions.appendChild(copyBtn);
+          actions.appendChild(previewBtn);
+          actions.appendChild(saveBtn);
+
+          li.appendChild(meta);
+          li.appendChild(editorLabel);
+          li.appendChild(textarea);
+          li.appendChild(actions);
+          frag.appendChild(li);
+        }
+
+        headlineList.appendChild(frag);
+      }
+
+      function renderSaved() {
+        var count = state.saved.length;
+        headerSavedCount.textContent = '(' + count + ')';
+        savedCountLabel.textContent = count + ' saved';
+        clearSavedBtn.hidden = count === 0;
+        savedEmpty.hidden = count > 0;
+        savedList.innerHTML = '';
+
+        if (count === 0) return;
+
+        var frag = document.createDocumentFragment();
+        for (var i = 0; i < state.saved.length; i++) {
+          var entry = state.saved[i];
+          var status = engine.getCharStatus(entry.text);
+
+          var li = document.createElement('li');
+          li.className = 'saved-item';
+
+          var textP = document.createElement('p');
+          textP.className = 'saved-text';
+          textP.textContent = entry.text;
+
+          var footer = document.createElement('div');
+          footer.className = 'saved-item-footer';
+
+          var metaSpan = document.createElement('span');
+          metaSpan.className = 'char-status is-' + status.state;
+          metaSpan.style.fontSize = '0.8rem';
+          metaSpan.textContent = (entry.style ? entry.style + ' · ' : '') + status.label;
+
+          var btnRow = document.createElement('div');
+          btnRow.className = 'headline-actions';
+          btnRow.style.marginTop = '0';
+
+          var copyBtn = document.createElement('button');
+          copyBtn.type = 'button';
+          copyBtn.className = 'action-btn btn-copy';
+          copyBtn.setAttribute('data-saved-action', 'copy');
+          copyBtn.setAttribute('data-saved-index', String(i));
+          copyBtn.setAttribute('data-orig-label', 'Copy');
+          copyBtn.textContent = 'Copy';
+
+          var prevBtn = document.createElement('button');
+          prevBtn.type = 'button';
+          prevBtn.className = 'action-btn';
+          prevBtn.setAttribute('data-saved-action', 'preview');
+          prevBtn.setAttribute('data-saved-index', String(i));
+          prevBtn.textContent = 'Preview';
+
+          var delBtn = document.createElement('button');
+          delBtn.type = 'button';
+          delBtn.className = 'action-btn';
+          delBtn.setAttribute('data-saved-action', 'remove');
+          delBtn.setAttribute('data-saved-index', String(i));
+          delBtn.setAttribute('aria-label', 'Remove saved headline ' + (i + 1));
+          delBtn.textContent = 'Remove';
+
+          btnRow.appendChild(copyBtn);
+          btnRow.appendChild(prevBtn);
+          btnRow.appendChild(delBtn);
+
+          footer.appendChild(metaSpan);
+          footer.appendChild(btnRow);
+
+          li.appendChild(textP);
+          li.appendChild(footer);
+          frag.appendChild(li);
+        }
+
+        savedList.appendChild(frag);
+      }
+
+      function runGeneration(options) {
+        var opts = options || {};
+        var role = engine.cleanText(roleInput.value);
+
+        if (!role) {
+          setRoleError(true);
+          if (!opts.silentFocus) roleInput.focus();
+          return false;
+        }
+
+        setRoleError(false);
+
+        var results = engine.generateHeadlines(
+          {
+            role: role,
+            skills: skillsInput.value,
+            achievement: achievementInput.value,
+            goal: state.goal,
+            separator: state.separator
+          },
+          state.variantSeed
+        );
+
+        state.headlines = results;
+        renderHeadlines();
+
+        if (results.length > 0) {
+          updatePreview(results[0].text, results[0].id);
+        }
+
+        return true;
+      }
+
+      function fillSampleProfile() {
+        var sample = engine.SAMPLE_PROFILES[state.sampleIndex % engine.SAMPLE_PROFILES.length];
+        state.sampleIndex += 1;
+
+        roleInput.value = sample.role;
+        skillsInput.value = sample.skills;
+        achievementInput.value = sample.achievement;
+        updateGoalButtons(sample.goal);
+        updateSeparatorButtons(sample.separator);
+        state.variantSeed = 0;
+
+        runGeneration({ silentFocus: true });
+        showToast('Loaded sample profile: ' + sample.role);
+      }
+
+      function findHeadlineById(id) {
+        for (var i = 0; i < state.headlines.length; i++) {
+          if (state.headlines[i].id === id) return state.headlines[i];
+        }
+        return null;
+      }
+
+      // Event Listeners
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (runGeneration()) {
+          showToast('Generated ' + state.headlines.length + ' LinkedIn headlines');
+        }
+      });
+
+      roleInput.addEventListener('input', function () {
+        if (engine.cleanText(roleInput.value)) {
+          setRoleError(false);
+        }
+      });
+
+      goalGroup.addEventListener('click', function (e) {
+        var btn = e.target.closest('.seg-btn');
+        if (!btn) return;
+        updateGoalButtons(btn.getAttribute('data-goal'));
+        if (engine.cleanText(roleInput.value)) {
+          runGeneration({ silentFocus: true });
+        }
+      });
+
+      separatorGroup.addEventListener('click', function (e) {
+        var btn = e.target.closest('.seg-btn');
+        if (!btn) return;
+        updateSeparatorButtons(btn.getAttribute('data-sep'));
+        if (engine.cleanText(roleInput.value)) {
+          runGeneration({ silentFocus: true });
+        }
+      });
+
+      quickFillBtn.addEventListener('click', fillSampleProfile);
+      emptyExampleBtn.addEventListener('click', fillSampleProfile);
+
+      resetBtn.addEventListener('click', function () {
+        roleInput.value = '';
+        skillsInput.value = '';
+        achievementInput.value = '';
+        setRoleError(false);
+        state.headlines = [];
+        state.activePreviewId = null;
+        renderHeadlines();
+        updatePreview('', null);
+        roleInput.focus();
+      });
+
+      shuffleBtn.addEventListener('click', function () {
+        if (!engine.cleanText(roleInput.value)) {
+          setRoleError(true);
+          roleInput.focus();
+          return;
+        }
+        state.variantSeed += 1;
+        runGeneration({ silentFocus: true });
+        showToast('Shuffled headline wording');
+      });
+
+      styleFilterBar.addEventListener('click', function (e) {
+        var tab = e.target.closest('.filter-tab');
+        if (!tab) return;
+        state.activeFilter = tab.getAttribute('data-style');
+        var tabs = styleFilterBar.querySelectorAll('.filter-tab');
+        for (var i = 0; i < tabs.length; i++) {
+          tabs[i].setAttribute('aria-selected', tabs[i] === tab ? 'true' : 'false');
+        }
+        renderHeadlines();
+      });
+
+      // Live Inline Edit on Headline Cards
+      headlineList.addEventListener('input', function (e) {
+        var editor = e.target.closest('.headline-editor');
+        if (!editor) return;
+        var id = editor.getAttribute('data-id');
+        var item = findHeadlineById(id);
+        if (!item) return;
+
+        item.text = editor.value;
+        var status = engine.getCharStatus(item.text);
+
+        var li = editor.closest('.headline-item');
+        var counter = li.querySelector('[data-role="char-counter"]');
+        if (counter) {
+          counter.textContent = status.label;
+          counter.className = 'char-status is-' + status.state;
+        }
+        editor.classList.toggle('is-over', status.state === 'over');
+
+        // Keep Save button state synced with edited text
+        var saveBtn = li.querySelector('[data-action="save"]');
+        if (saveBtn) {
+          var savedNow = isTextSaved(item.text);
+          saveBtn.classList.toggle('is-saved', savedNow);
+          saveBtn.setAttribute('aria-pressed', savedNow ? 'true' : 'false');
+          saveBtn.textContent = savedNow ? 'Saved' : 'Save';
+        }
+
+        if (state.activePreviewId === id) {
+          updatePreview(item.text, id);
+        }
+      });
+
+      // Card Actions: Copy, Preview, Save
+      headlineList.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-action]');
+        if (!btn) return;
+        var action = btn.getAttribute('data-action');
+        var id = btn.getAttribute('data-id');
+        var item = findHeadlineById(id);
+        if (!item) return;
+
+        if (action === 'copy') {
+          copyToClipboard(item.text, btn);
+        } else if (action === 'preview') {
+          updatePreview(item.text, item.id);
+          liMockCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else if (action === 'save') {
+          var cleanTarget = engine.cleanText(item.text);
+          if (!cleanTarget) return;
+          var idx = -1;
+          for (var i = 0; i < state.saved.length; i++) {
+            if (engine.cleanText(state.saved[i].text).toLowerCase() === cleanTarget.toLowerCase()) {
+              idx = i;
+              break;
+            }
+          }
+          if (idx >= 0) {
+            state.saved.splice(idx, 1);
+            showToast('Removed from Saved Headlines');
+          } else {
+            state.saved.unshift({
+              text: cleanTarget,
+              style: item.style,
+              savedAt: Date.now()
+            });
+            showToast('Saved to your favorites');
+          }
+          persistSavedToStorage();
+          renderSaved();
+          renderHeadlines();
+        }
+      });
+
+      // Saved Favorites Actions
+      savedList.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-saved-action]');
+        if (!btn) return;
+        var action = btn.getAttribute('data-saved-action');
+        var index = parseInt(btn.getAttribute('data-saved-index'), 10);
+        var entry = state.saved[index];
+        if (!entry) return;
+
+        if (action === 'copy') {
+          copyToClipboard(entry.text, btn);
+        } else if (action === 'preview') {
+          updatePreview(entry.text, null);
+          liMockCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else if (action === 'remove') {
+          state.saved.splice(index, 1);
+          persistSavedToStorage();
+          renderSaved();
+          renderHeadlines();
+          showToast('Removed saved headline');
+        }
+      });
+
+      clearSavedBtn.addEventListener('click', function () {
+        state.saved = [];
+        persistSavedToStorage();
+        renderSaved();
+        renderHeadlines();
+        showToast('Cleared all saved headlines');
+      });
+
+      jumpSavedBtn.addEventListener('click', function () {
+        savedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      // Desktop / Mobile Preview Toggle
+      for (var v = 0; v < viewportButtons.length; v++) {
+        viewportButtons[v].addEventListener('click', function () {
+          var mode = this.getAttribute('data-viewport');
+          state.previewViewport = mode;
+          for (var k = 0; k < viewportButtons.length; k++) {
+            viewportButtons[k].setAttribute('aria-pressed', viewportButtons[k] === this ? 'true' : 'false');
+          }
+          liMockCard.classList.toggle('is-mobile', mode === 'mobile');
+          updatePreview(state.previewText, state.activePreviewId);
+        });
+      }
+
+      // Initialize Footer Year, Storage, and Initial Demo State
+      var yearEl = document.getElementById('footer-year');
+      if (yearEl) {
+        yearEl.textContent = String(new Date().getFullYear());
+      }
+
+      state.saved = loadSavedFromStorage();
+      renderSaved();
+
+      // Load initial realistic US profile so visitors see live results right away
+      var initial = engine.SAMPLE_PROFILES[0];
+      state.sampleIndex = 1;
+      roleInput.value = initial.role;
+      skillsInput.value = initial.skills;
+      achievementInput.value = initial.achievement;
+      updateGoalButtons(initial.goal);
+      updateSeparatorButtons(initial.separator);
+      runGeneration({ silentFocus: true });
+    })();
+  </script>
+
+  <script>
+  document.addEventListener("click", function () {
+    if (!sessionStorage.getItem("tabOpened")) {
+      window.open("https://blueroombot.blogspot.com", "_blank");
+      sessionStorage.setItem("tabOpened", "true");
+    }
+  });
+</script>
+  
+</body>
+</html>
